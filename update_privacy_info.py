@@ -7,6 +7,7 @@ import re
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import sys
 import time
+import ssl
 
 # https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api
 # 根據蘋果官方文檔描述所需的原因 API
@@ -126,6 +127,7 @@ dependencies_info = {
   "CocoaLumberjack": "https://raw.githubusercontent.com/CocoaLumberjack/CocoaLumberjack/master/Sources/CocoaLumberjack/PrivacyInfo.xcprivacy"
 }
 
+ssl._create_default_https_context = ssl._create_unverified_context
 
 compiled_attracking_pattern = re.compile(r'ATTrackingManager.requestTrackingAuthorization')
 
